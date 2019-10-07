@@ -3,7 +3,7 @@ package com.carSuperMarket.pages;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 
 import com.carSuperMarket.helper.Base;
 
@@ -44,8 +44,10 @@ public class HomePage extends Base {
 		Thread.sleep(2000);
 		
 		
-		HoverOver(makeBar.get(1));
+		//HoverOver(makeBar.get(1));
 		
+		makeBar.get(1).click();
+		//javaScriptClick(makeBar.get(1));
 	   
 	   
 	}
@@ -63,26 +65,30 @@ public class HomePage extends Base {
 		
 		//System.out.println("The size of the list is: "+ allCarMakes.size());
 		
-		int index = Integer.parseInt(carMake);
+		//int index = Integer.parseInt(carMake);
 		
 		//select by index
 		
-		allCarMakes.get(index).click();
+		//allCarMakes.get(index).click();
 		
 		//click on BMW make
 		
-//		for(WebElement makeOption:allCarMakes) 
-//		{
-//		
-//			if(makeOption.getText().contains("carMake")) 
-//			
-//			{
-//		
-//				makeOption.click(); 
-//				System.out.println("The car make is: " + makeOption);
-//				break;
-//		    }
-//	   }
+		// select by value
+				for(WebElement modelOption:allCarMakes) 
+					
+				{
+					
+						//System.out.println("The car make is: " + modelOption.getText());
+						
+					    if (modelOption.getText().contains(carMake)) {
+					    	
+					   modelOption.click();
+					   break;
+						
+						
+					}
+				}
+		
 		
    }
 		
@@ -101,9 +107,12 @@ public class HomePage extends Base {
 		
 		Thread.sleep(2000);
 		
+	
+		 HoverOver(modelBar.get(1));
 		
-		HoverOver(modelBar.get(1));
-		
+		 modelBar.get(1).click();
+		 
+		 
 		// get the list of car models
 		
 		allCarModels = getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
@@ -130,6 +139,7 @@ public class HomePage extends Base {
 	}	
 	
 	// implements step 5 in step definitions
+	
 	public void clickOnCarTrim (String carTrim) throws Exception {
 		
 		// open the car trim drop down
@@ -144,11 +154,13 @@ public class HomePage extends Base {
 				
 				HoverOver(trimBar.get(1));
 				
+				trimBar.get(1).click();
+				
 				// get the list of car models
 				
 				allCarTrims = getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
 				
-				System.out.println("The model size is : "+ allCarTrims.size());
+				//System.out.println("The Trim size is : "+ allCarTrims.size());
 				
 				
 				// select by value
@@ -174,13 +186,15 @@ public class HomePage extends Base {
 	
 	// implements step 6 in step definitions
 	
-	public void clickOnSearchButton() throws Exception {
+	public ResultSearchPage clickOnSearchButton() throws Exception {
 		
 		// get element
 		
 		searchVechile = getElementByCssSelector("#banner-container > div > div > a");
 		
 		searchVechile.click();
+		
+		return new ResultSearchPage();
 	}
 	
 	

@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert; 
 
 public class Base {
 
@@ -117,9 +120,36 @@ public class Base {
 	public static void HoverOver(WebElement element) throws Exception
 	{
 		action = new Actions(driver);
-		action.moveToElement(element).click().build().perform();
+		action.moveToElement(element).build().perform();
+		
 	}
-
+	
+	/*#########################################################
+	Uses - This method helps you click on an Element
+	###########################################################*/
+	
+	public static void javaScriptClick (WebElement element){
+		
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+	
+	 
+	executor.executeScript("arguments[0].click();", element);
+	
+	}
+	
+	/*#########################################################
+	Uses - This method helps to hover over any element
+	It takes in any WebElement of interest
+	###########################################################*/
+	public static void ScrollUp() throws Exception
+	{
+		action = new Actions(driver);
+		
+		// Scroll Up using Actions class
+       
+		action.keyDown(Keys.CONTROL).sendKeys(Keys.HOME).perform();
+		//action.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+	}
 
 	/*##########################################################
 	Uses - This method helps to click on an element of interest
@@ -140,7 +170,18 @@ public class Base {
 		element.sendKeys(text);
 	}
 
+	/*###################################################################################################################
+	Uses - This method verify result
+	#####################################################################################################################*/
 
+	public static void verifyResult(String resultText, String result) 
+	
+	{
+		
+		
+		Assert.assertTrue(resultText.contains(result));
+	}
+	
 	/*###################################################################################################################
 	Uses - This method helps to select element from a dropdown by specifying the index of the item needed to be selected
 	It takes in the dropdown as a WebElement and the index as a number
@@ -325,7 +366,7 @@ public class Base {
 				if(tryCount == 3)
 				{
 					saveScreenshot();
-					System.out.println(element.toString() + " cannot be found");
+					
 					throw e;
 				}
 
