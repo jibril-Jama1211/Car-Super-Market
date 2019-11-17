@@ -111,28 +111,28 @@ public class SearchForCars {
 	@When("I select the car age as {string}")
 	public void i_select_the_car_age_as(String carAge) throws Exception {
 		
-		searchResult.carAge(carAge);
+		searchResult.Age(carAge);
 	    
 	}
 
 	@When("I select the mileage as {string}")
 	public void i_select_the_mileage_as(String carMileage) throws Exception {
 		
-		searchResult.carMileage(carMileage);
+		searchResult.Mileage(carMileage);
 	    
 	}
 
 	@When("I select the body type as {string}")
 	public void i_select_the_body_type_as(String bodyType) throws Exception {
 		
-		searchResult.carBodyType(bodyType);
+		searchResult.BodyType(bodyType);
 	   
 	}
 
 	@When("I select the fuel type as {string}")
 	public void i_select_the_fuel_type_as(String fuelType) throws Exception {
 		
-		searchResult.carFuelType(fuelType);
+		searchResult.FuelType(fuelType);
 	    
 	}
 
@@ -153,35 +153,35 @@ public class SearchForCars {
 	@When("I select the car colour as {string}")
 	public void i_select_the_car_colour_as(String colour) throws Exception {
 	   
-		searchResult.carColour(colour);
+		searchResult.Colour(colour);
 		
 	}
 
 	@When("I select the transmissions types as {string}")
 	public void i_select_the_transmissions_types_as(String transmission) throws Exception {
 		
-		searchResult.carTransmissions(transmission);
+		searchResult.Transmissions(transmission);
 	   
 	}
 
 	@When("I select the car location as {string}")
 	public void i_select_the_car_location_as(String location) throws Exception {
 		
-		searchResult.carLocation(location);
+		searchResult.Location(location);
 	    
 	}
 
 	@When("I select the added since as {string}")
 	public void i_select_the_added_since_as(String since) throws Exception {
 		
-		searchResult.carAddedSince(since);
+		searchResult.AddedSince(since);
 	    
 	}
 
 	@When("I select the ignore reservvation as {string}")
 	public void i_select_the_ignore_reservvation_as(String reserved) throws Exception {
 		
-		searchResult.carReserved(reserved);
+		searchResult.Reserved(reserved);
 	   
 	}
 
@@ -222,10 +222,6 @@ public class SearchForCars {
 	   
 	}
 
-	@Then("The {string} of the make is also displayed")
-	public void the_of_the_make_is_also_displayed(String string) {
-	    
-	}
 
 
 

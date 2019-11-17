@@ -51,6 +51,19 @@ public class ResultSearchPage extends Base {
 	List<WebElement> allFinancePeriodMenu;
 	WebElement result;
 	String resultText;
+	List<WebElement> makeBar; 
+	List<WebElement> vanMakeOptions;
+	List<WebElement> modelBar;		
+	List<WebElement> vanModelOptions;
+	List<WebElement> trimBar;
+	List<WebElement> vanTrimOptions;
+	WebElement inputValue; 
+	
+	
+	/*
+	 * Scenario Outline: Search for different cars on Home page
+	 * */
+	
 				/*Payment Search options*/
 	
 	
@@ -179,6 +192,17 @@ public class ResultSearchPage extends Base {
 		
 		 allMaxMontly = getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
 		
+		 //inputValue = getElementByXPath("//*[@id=\"searchbaroption-425\"]");
+		 
+		 // scroll to view maxMonthly payment
+		 
+		 //ScrollIntoView(inputValue);
+		 
+		 //locateIntoView(inputValue);
+		 
+		 ScrollByPixel ();
+		 
+		 Thread.sleep(4000);
 		// iterate through min price list and select ur value
 		
 		for (WebElement maxMonthlyOption:allMaxMontly) {
@@ -196,7 +220,7 @@ public class ResultSearchPage extends Base {
 
 					/* Car Specification options*/
 	
-	public void carAge (String carAge) throws Exception 
+	public void Age (String carAge) throws Exception 
 	
 	{
 	
@@ -204,7 +228,7 @@ public class ResultSearchPage extends Base {
 		
 		// locate Min Price drop down menu
 		
-		carAgeMenu = getElementById("searchbar-Age"); 
+		carAgeMenu = getElementById("searchbar-Year From"); 
 		
 		// click and open the min price menu
 		
@@ -228,7 +252,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 
-	public void carMileage (String carMileage) throws Exception 
+	public void Mileage (String carMileage) throws Exception 
 	
 	{
 	
@@ -260,7 +284,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carBodyType (String bodyType) throws Exception 
+	public void BodyType (String bodyType) throws Exception 
 	
 	{
 	
@@ -292,7 +316,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 
-	public void carFuelType (String fuelType) throws Exception 
+	public void FuelType (String fuelType) throws Exception 
 	
 	{
 	
@@ -388,7 +412,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carColour (String colour) throws Exception 
+	public void Colour (String colour) throws Exception 
 	
 	{
 	
@@ -420,7 +444,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carTransmissions (String transmission) throws Exception 
+	public void Transmissions (String transmission) throws Exception 
 	
 	{
 	
@@ -452,7 +476,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carLocation (String location) throws Exception 
+	public void Location (String location) throws Exception 
 	
 	{
 	
@@ -484,7 +508,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carAddedSince (String since) throws Exception 
+	public void AddedSince (String since) throws Exception 
 	
 	{
 	
@@ -516,7 +540,7 @@ public class ResultSearchPage extends Base {
 		
 	}
 	
-	public void carReserved (String reserved) throws Exception 
+	public void Reserved (String reserved) throws Exception 
 	
 	{
 	
@@ -566,10 +590,10 @@ public class ResultSearchPage extends Base {
 		
 		//depositAmountMenu = getElementByCssSelector("[class=\"np-field field-value has-value\"]"); 
 		
-		depositAmountMenu = getElementByXPath("//span[text()='£250']");
+		depositAmountMenu = getElementById("searchbar-Optional Deposit"); 
 		
 		
-		javaScriptClick(depositAmountMenu);
+		javaScript(depositAmountMenu);
 		
 		// click and open the min price menu
 		
@@ -587,7 +611,7 @@ public class ResultSearchPage extends Base {
 				
 			if(amountOption.getText().contains(amount)) {
 				
-				javaScriptClick(amountOption);
+				javaScript(amountOption);
 				break;
 			}
 		}
@@ -605,7 +629,7 @@ public class ResultSearchPage extends Base {
 		
 		// open the annual mileage drop down
 		
-		javaScriptClick(annualMileageMenu);
+		javaScript(annualMileageMenu);
 		
 		
 		allAnnualMileageMenu = getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
@@ -616,7 +640,7 @@ public class ResultSearchPage extends Base {
 				
 			if(mileageOption.getText().contains(mileage)) {
 				
-				javaScriptClick(mileageOption);
+				javaScript(mileageOption);
 				break;
 			}
 		}
@@ -634,7 +658,7 @@ public class ResultSearchPage extends Base {
 		
 		// open the finance period drop down
 		
-		javaScriptClick(financePeriodMenu);
+		javaScript(financePeriodMenu);
 		
 		
 		allFinancePeriodMenu = getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
@@ -645,7 +669,7 @@ public class ResultSearchPage extends Base {
 				
 			if(periodOption.getText().contains(period)) {
 				
-				javaScriptClick(periodOption);
+				javaScript(periodOption);
 				break;
 			}
 		}
@@ -661,23 +685,139 @@ public class ResultSearchPage extends Base {
 		Thread.sleep(3000);
 		 
 		
-		result = getElementByCssSelector("#results > div > div > div > div > div.vehicle-card-title > h2 > a");
+		result = getElementByCssSelector("#results > div > div > div:nth-child(1) > div > div.vehicle-card-title > h2 > a");
 		
 		resultText = result.getText();
 		
 		//System.out.println(result.getText().contains(carName));
-		verifyResult(resultText, carName);
-		
-		
-		{
-			
-			
-		}
-		
-		
+		verifyResult(resultText, carName);	
 		
 		
 	}
+
+
+	/*
+	 * Scenario Outline: Search for different vans on Home Page using Van link 
+	 * */
+	
+	public void vanMake (String make) throws Exception {
+		
+		makeBar = getElementsByCssSelector("div#searchbar-Make.np-select.right");
+		
+		Thread.sleep(2000);
+		
+		
+		//HoverOver(makeBar.get(1));
+		
+		makeBar.get(1).click();
+		//javaScriptClick(makeBar.get(1));
+		
+		
+		vanMakeOptions =  getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
+		
+		for ( WebElement makeOption: vanMakeOptions) {
+			
+			if (makeOption.getText().contains(make)) {
+				
+				makeOption.click();
+				   break;
+				
+				}
+		    
+			}
+		
+		
+	}
+
+	public void vanModel (String model) throws Exception {
+		
+		
+		Thread.sleep(2000);
+		
+		modelBar = getElementsByCssSelector("div#searchbar-Model.np-select.right");
+		
+		Thread.sleep(2000);
+		
+		
+		//HoverOver(modelBar.get(1));
+		
+		modelBar.get(1).click();
+		//javaScriptClick(modelBar.get(1));
+		
+		
+		vanModelOptions =  getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
+		
+		for ( WebElement modelOption: vanModelOptions) {
+			
+			if (modelOption.getText().contains(model)) {
+				
+				modelOption.click();
+				   break;
+				
+				}
+		    
+			}
+		
+	}
+
+
+	public void vanTrim (String trim) throws Exception {
+		
+		
+		Thread.sleep(2000);
+		
+		trimBar = getElementsByCssSelector("div#searchbar-Trim.np-select.right");
+		
+		Thread.sleep(2000);
+		
+		
+		//HoverOver(modelBar.get(1));
+		
+		trimBar.get(1).click();
+		//javaScriptClick(modelBar.get(1));
+		
+		
+		vanTrimOptions =  getElementsByXPath("//ul[contains(@class,'np-inner-list')]//li");
+		
+		for ( WebElement trimOption: vanTrimOptions ) {
+			
+			if (trimOption.getText().contains(trim)) {
+				
+				trimOption.click();
+				   break;
+				
+				}
+		    
+			}
+		
+	}
+
+	/*
+	 * Scenario Outline:Search for different vans that are two years old on vans search page 
+	 * */
+
+	public void checkVanAge (String vanAge) throws Exception {
+		
+		Thread.sleep(3000);
+		 
+		
+		result = getElementByCssSelector("#results > div > section.vehicle-search-filters > div");
+		
+		resultText = result.getText();
+		
+		//System.out.println(resultText);
+		//System.out.println(result.getText().contains(vanAge));
+		
+		//verifyResult(resultText, vanAge);	
+		
+		
+	}
+	
+	
+
+	
+
+
 
 
 

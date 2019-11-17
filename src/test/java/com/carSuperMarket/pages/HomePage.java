@@ -22,7 +22,12 @@ public class HomePage extends Base {
 	List<WebElement> trimBar;
 	List<WebElement> allCarTrims;
 	WebElement searchVechile;
-
+	List<WebElement> readMoreLink;
+	
+	/*
+	 * Scenario Outline: Search for different cars on Home page
+	 * */
+	
 	// implements  step 1 in step definitions
 	
 	public void navigateToHomePage() throws Exception 
@@ -144,7 +149,7 @@ public class HomePage extends Base {
 		
 		// open the car trim drop down
 		
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 				
 				trimBar = getElementsByCssSelector("div#searchbar-Trim.np-select.right");
 				
@@ -198,7 +203,15 @@ public class HomePage extends Base {
 	}
 	
 	
+	/*
+	 * Scenario Outline: Search for different vans on Home Page using Van link 
+	 * */
 	
+	// step one is to navigate to car super market home page
+
+	// its done above and is one time process
+	
+	// implement step two click on van link
 	
  	public ResultSearchPage vanLinkClick () throws Exception
 	
@@ -206,11 +219,13 @@ public class HomePage extends Base {
 		vanLink = getElementByCssSelector("#main-menu-vans");
 		
 		vanLink.click();
-		
 		return new ResultSearchPage();
+		
+		
 	}
 
-
+ 	
+ 	
 
 	
 
