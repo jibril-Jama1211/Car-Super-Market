@@ -17,7 +17,7 @@ import cucumber.api.junit.Cucumber;
 
 @CucumberOptions(
 		
-		features = {"classpath:com/carSuperMarket/features"},
+		features = {"src/test/java/com/carSuperMarket/features"},
 		
 		plugin = {"pretty", "json:target/report.json",
         "de.monochromata.cucumber.report.PrettyReports:target/pretty-cucumber"},
