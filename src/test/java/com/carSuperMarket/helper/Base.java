@@ -20,6 +20,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Coordinates;
 import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.ui.Select;
+
+import com.aventstack.extentreports.ExtentReporter;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert; 
 
@@ -91,7 +96,13 @@ public class Base {
 				driver = initChrome();
 		}
 		//the command below maximizes the browser when launched
+		
 		driver.manage().window().maximize();
+		
+		
+		
+		
+		
 	}
 
 
