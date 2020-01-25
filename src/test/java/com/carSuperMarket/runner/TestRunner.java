@@ -34,7 +34,7 @@ import cucumber.api.junit.Cucumber;
 
 
 
-public class ReportRunner {
+public class TestRunner {
 		
 	
 	
