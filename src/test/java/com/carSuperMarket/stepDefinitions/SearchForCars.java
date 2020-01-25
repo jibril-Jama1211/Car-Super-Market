@@ -3,9 +3,9 @@ package com.carSuperMarket.stepDefinitions;
 import com.carSuperMarket.pages.HomePage;
 import com.carSuperMarket.pages.ResultSearchPage;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 
 

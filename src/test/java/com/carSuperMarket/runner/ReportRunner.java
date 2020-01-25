@@ -1,16 +1,17 @@
 package com.carSuperMarket.runner;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
-import com.cucumber.listener.Reporter;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+
+
 
 @RunWith(Cucumber.class)
 
@@ -18,7 +19,8 @@ import io.cucumber.junit.CucumberOptions;
 		
 		features = {"classpath:com/carSuperMarket/features"},
 		
-		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:target/cucumber-reports/report.html"},
+		plugin = {"pretty", "json:target/report.json",
+        "de.monochromata.cucumber.report.PrettyReports:target/pretty-cucumber"},
 		
 		glue = {"com/carSuperMarket/hook", "com/carSuperMarket/stepDefinitions"},
 		
@@ -26,25 +28,17 @@ import io.cucumber.junit.CucumberOptions;
 		
 		monochrome = false
 		
-		)
+)
+
 
 
 
 
 public class ReportRunner {
+		
+	
+	
 
-
-	@BeforeClass
-	public static void setUp() 
-	{
-		
-		
-		Reporter.loadXMLConfig(new File("com/carSuperMarket/util/extent-config.xml"));
-		
-		
-		
-	}
-
-
+   
 
 }
