@@ -202,7 +202,7 @@ public class ResultSearchPage extends Base {
 		 
 		 ScrollByPixel ();
 		 
-		 Thread.sleep(4000);
+		 Thread.sleep(6000);
 		// iterate through min price list and select ur value
 		
 		for (WebElement maxMonthlyOption:allMaxMontly) {

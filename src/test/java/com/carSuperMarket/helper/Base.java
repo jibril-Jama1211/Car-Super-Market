@@ -163,7 +163,7 @@ public class Base {
 		
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 	
-	    executor.executeScript("window.scrollBy(0,600)", "");
+	    executor.executeScript("window.scrollBy(0,655)", "");
 	
 	}
 	

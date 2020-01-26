@@ -98,13 +98,6 @@ public class SearchForCars {
 	    
 	}
 
-	@When("I select the max monthly payment as {string}")
-	public void i_select_the_max_monthly_payment_as(String maxMontlyPayment) throws Exception {
-		
-		searchResult.maxMonthlyPayment(maxMontlyPayment);
-	    
-	}
-
 	
 					/* Car Specification options*/
 	
@@ -204,12 +197,6 @@ public class SearchForCars {
 		
 	}
 
-	@When("I select the finance period as {string}")
-	public void i_select_the_finance_period_as(String period) throws Exception {
-		
-		searchResult.financePeriod(period);
-	   
-	}
 
 	
 
