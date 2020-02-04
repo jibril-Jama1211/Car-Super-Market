@@ -46,7 +46,7 @@ public class HomePage extends Base {
 		
 		makeBar = getElementsByCssSelector("div#searchbar-Make.np-select.right");
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		
 		//HoverOver(makeBar.get(1));
@@ -105,7 +105,7 @@ public class HomePage extends Base {
 		
 		// open the car model drop down
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		modelBar = getElementsByCssSelector("div#searchbar-Model.np-select.right");
 		
@@ -149,7 +149,7 @@ public class HomePage extends Base {
 		
 		// open the car trim drop down
 		
-				Thread.sleep(3000);
+				Thread.sleep(6000);
 				
 				trimBar = getElementsByCssSelector("div#searchbar-Trim.np-select.right");
 				
